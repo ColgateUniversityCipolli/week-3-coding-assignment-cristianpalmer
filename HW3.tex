@@ -103,10 +103,66 @@ to this \texttt{.Rnw} file.\\
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlcom{# Copy your solution code here.}
+\hlkwd{library}\hldef{(gmp)}
+
+\hlcom{################################################################################}
+\hldef{matrix_data} \hlkwb{<-} \hlkwd{matrix}\hldef{(}\hlkwd{c}\hldef{(}\hlnum{6}\hldef{,} \hlnum{22}\hldef{,} \hlnum{38}\hldef{,} \hlnum{57}\hldef{,} \hlnum{75}\hldef{,} \hlnum{87}\hldef{,}
+                        \hlnum{10}\hldef{,} \hlnum{26}\hldef{,} \hlnum{39}\hldef{,} \hlnum{58}\hldef{,} \hlnum{77}\hldef{,} \hlnum{91}\hldef{,}
+                        \hlnum{14}\hldef{,} \hlnum{33}\hldef{,} \hlnum{46}\hldef{,} \hlnum{62}\hldef{,} \hlnum{82}\hldef{,} \hlnum{93}\hldef{,}
+                        \hlnum{15}\hldef{,} \hlnum{34}\hldef{,} \hlnum{51}\hldef{,} \hlnum{65}\hldef{,} \hlnum{85}\hldef{,} \hlnum{94}\hldef{,}
+                        \hlnum{21}\hldef{,} \hlnum{35}\hldef{,} \hlnum{55}\hldef{,} \hlnum{69}\hldef{,} \hlnum{86}\hldef{,} \hlnum{95}\hldef{),}
+                      \hlkwc{nrow} \hldef{=} \hlnum{5}\hldef{,} \hlkwc{byrow} \hldef{=} \hlnum{TRUE}\hldef{)}
+
+\hldef{factorization_results} \hlkwb{<-} \hlkwd{list}\hldef{()}
+
+\hldef{positions_with_duplicates} \hlkwb{<-} \hlkwd{c}\hldef{()}
+
+\hlkwa{for} \hldef{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hldef{(matrix_data)) \{}
+  \hldef{factors} \hlkwb{<-} \hlkwd{factorize}\hldef{(matrix_data[i])}
+
+  \hlkwa{if} \hldef{(}\hlkwd{any}\hldef{(}\hlkwd{duplicated}\hldef{(factors))) \{}
+    \hldef{positions_with_duplicates} \hlkwb{<-} \hlkwd{c}\hldef{(positions_with_duplicates, i)}
+  \hldef{\}}
+\hldef{\}}
+\hldef{Incorrect_Number} \hlkwb{=} \hldef{matrix_data[positions_with_duplicates]}
+\hlcom{################################################################################}
+\hldef{New_Matrix} \hlkwb{=} \hlkwd{matrix}\hldef{(}\hlnum{70}\hlopt{:}\hlnum{76}\hldef{)}
+
+\hldef{factorization_results_new} \hlkwb{<-} \hlkwd{list}\hldef{()}
+
+\hldef{positions_with_duplicates_new} \hlkwb{<-} \hlkwd{c}\hldef{()}
+
+\hlkwa{for} \hldef{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hldef{(New_Matrix)) \{}
+  \hldef{factors_new} \hlkwb{<-} \hlkwd{factorize}\hldef{(New_Matrix[i])}
+
+  \hlkwa{if} \hldef{(}\hlopt{!}\hlkwd{any}\hldef{(}\hlkwd{duplicated}\hldef{(factors_new))) \{}
+    \hldef{positions_with_duplicates_new} \hlkwb{<-} \hlkwd{c}\hldef{(positions_with_duplicates_new, i)}
+  \hldef{\}}
+\hldef{\}}
+\hldef{New_Possible_Numbers} \hlkwb{=} \hldef{New_Matrix[positions_with_duplicates_new]}
+\hlkwa{for} \hldef{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hldef{(New_Possible_Numbers)) \{}
+  \hldef{Final_Numbers} \hlkwb{<-} \hlkwd{factorize}\hldef{(New_Possible_Numbers[i])}
+  \hlkwa{if} \hldef{(}\hlkwd{length}\hldef{(Final_Numbers)} \hlopt{==} \hlnum{2}\hldef{) \{}
+    \hlkwd{return}\hldef{(New_Possible_Numbers[i])}
+  \hldef{\}}
+\hldef{\}}
+\hldef{Replacement_Number} \hlkwb{=} \hldef{New_Possible_Numbers[i]}
+
+\hlcom{################################################################################}
+\hlkwd{print}\hldef{(}\hlkwd{paste}\hldef{(}\hlsng{"Incorrect Number  ="} \hldef{, Incorrect_Number))}
 \end{alltt}
+\begin{verbatim}
+## [1] "Incorrect Number  = 75"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{print}\hldef{(}\hlkwd{paste}\hldef{(}\hlsng{"Replacement Number = "}\hldef{, Replacement_Number))}
+\end{alltt}
+\begin{verbatim}
+## [1] "Replacement Number =  74"
+\end{verbatim}
 \end{kframe}
 \end{knitrout}
+
 \end{enumerate}
 
 \bibliography{bibliography}
