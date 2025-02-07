@@ -1,6 +1,6 @@
 library(gmp)
 
-################################################################################
+#####################Finding Incorrect Number###################################
 matrix_data <- matrix(c(6, 22, 38, 57, 75, 87,
                         10, 26, 39, 58, 77, 91,
                         14, 33, 46, 62, 82, 93,
@@ -20,8 +20,14 @@ for (i in 1:length(matrix_data)) {
   }
 }
 Incorrect_Number = matrix_data[positions_with_duplicates]
-################################################################################
-New_Matrix = matrix(70:76)
+Position_Below_Incorrect_Number = positions_with_duplicates - 1
+Position_Above_Incorrect_Number = positions_with_duplicates + 1
+Lower_Bound = matrix_data[Position_Below_Incorrect_Number] + 1
+Upper_Bound = matrix_data[Position_Above_Incorrect_Number] -1
+
+#####################Finding Replaceement Number################################
+
+New_Matrix = matrix(Lower_Bound:Upper_Bound)
 
 factorization_results_new <- list()
 
@@ -43,6 +49,7 @@ for (i in 1:length(New_Possible_Numbers)) {
 }
 Replacement_Number = New_Possible_Numbers[i]
 
-################################################################################
+#####################Printing Answers##########################################
+
 print(paste("Incorrect Number  =" , Incorrect_Number))
 print(paste("Replacement Number = ", Replacement_Number))

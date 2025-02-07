@@ -105,7 +105,7 @@ to this \texttt{.Rnw} file.\\
 \begin{alltt}
 \hlkwd{library}\hldef{(gmp)}
 
-\hlcom{################################################################################}
+\hlcom{#####################Finding Incorrect Number###################################}
 \hldef{matrix_data} \hlkwb{<-} \hlkwd{matrix}\hldef{(}\hlkwd{c}\hldef{(}\hlnum{6}\hldef{,} \hlnum{22}\hldef{,} \hlnum{38}\hldef{,} \hlnum{57}\hldef{,} \hlnum{75}\hldef{,} \hlnum{87}\hldef{,}
                         \hlnum{10}\hldef{,} \hlnum{26}\hldef{,} \hlnum{39}\hldef{,} \hlnum{58}\hldef{,} \hlnum{77}\hldef{,} \hlnum{91}\hldef{,}
                         \hlnum{14}\hldef{,} \hlnum{33}\hldef{,} \hlnum{46}\hldef{,} \hlnum{62}\hldef{,} \hlnum{82}\hldef{,} \hlnum{93}\hldef{,}
@@ -125,8 +125,14 @@ to this \texttt{.Rnw} file.\\
   \hldef{\}}
 \hldef{\}}
 \hldef{Incorrect_Number} \hlkwb{=} \hldef{matrix_data[positions_with_duplicates]}
-\hlcom{################################################################################}
-\hldef{New_Matrix} \hlkwb{=} \hlkwd{matrix}\hldef{(}\hlnum{70}\hlopt{:}\hlnum{76}\hldef{)}
+\hldef{Position_Below_Incorrect_Number} \hlkwb{=} \hldef{positions_with_duplicates} \hlopt{-} \hlnum{1}
+\hldef{Position_Above_Incorrect_Number} \hlkwb{=} \hldef{positions_with_duplicates} \hlopt{+} \hlnum{1}
+\hldef{Lower_Bound} \hlkwb{=} \hldef{matrix_data[Position_Below_Incorrect_Number]} \hlopt{+} \hlnum{1}
+\hldef{Upper_Bound} \hlkwb{=} \hldef{matrix_data[Position_Above_Incorrect_Number]} \hlopt{-}\hlnum{1}
+
+\hlcom{#####################Finding Replaceement Number################################}
+
+\hldef{New_Matrix} \hlkwb{=} \hlkwd{matrix}\hldef{(Lower_Bound}\hlopt{:}\hldef{Upper_Bound)}
 
 \hldef{factorization_results_new} \hlkwb{<-} \hlkwd{list}\hldef{()}
 
@@ -148,7 +154,8 @@ to this \texttt{.Rnw} file.\\
 \hldef{\}}
 \hldef{Replacement_Number} \hlkwb{=} \hldef{New_Possible_Numbers[i]}
 
-\hlcom{################################################################################}
+\hlcom{#####################Printing Answers##########################################}
+
 \hlkwd{print}\hldef{(}\hlkwd{paste}\hldef{(}\hlsng{"Incorrect Number  ="} \hldef{, Incorrect_Number))}
 \end{alltt}
 \begin{verbatim}
