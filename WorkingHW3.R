@@ -50,6 +50,5 @@ for (i in 1:length(New_Possible_Numbers)) {
 Replacement_Number = New_Possible_Numbers[i]
 
 #####################Printing Answers##########################################
-
-print(paste("Incorrect Number  =" , Incorrect_Number))
-print(paste("Replacement Number = ", Replacement_Number))
+Incorrect_Number
+Replacement_Number

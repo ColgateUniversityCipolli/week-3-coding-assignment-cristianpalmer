@@ -97,7 +97,9 @@ Blake made.\\
 to this \texttt{.Rnw} file.\\
 \textbf{Hint:} You may find the \verb|%in%| operator and the \verb|setdiff()| function to be helpful.\\
 
-\textbf{Solution:} 
+\textbf{Solution: The incorrect number is 75 and the correct replacement number is 74. For my solution, I first installed the gmp
+library so I could use the \texttt{factorize()} function to determine the prime factorization of numbers. I then created a matrix mimicking the one  provided to us in the problem, and subsequently used the \texttt{factorize()} function within a loop to determine the prime factorization of every
+number in the matrix. I knew that this was a viable method to solving the problem due to the given fact that prime numbers were the key to the problem. After using my loop to determine the prime factorization of every number in the matrix, it instantly became clear that 75 was the odd number out. By running the code \texttt{factorize(75)} we can determine that the prime factorization of 75 is 3x5x5. Of the numbers in our matrix, 75 was the only number that had a prime factorization containing a repeat digit. Every other number had a prime factorization containing two unique digits. I then altered my loop to output any numbers that had a repeat digit in their prime factorization and that is how I solved the first part of the problem since the only output was 75, proving that it was the odd number out. For the second part of the problem, I started by creating a new matrix which included the possible replacement numbers. This matrix contained numbers 70-76 since this was the range we are interested in to find the correct replacement number. I then ran this matrix through a copy of the previous loop, but I reversed the logic so it would output to me any numbers in the matrix without duplicate numbers in their prime factorization. The output from this matrix still contained a few possibilities because, although they didn't have repeat numbers in their prime factorization, they either had 1 or 3 numbers, not 2 like we are looking for in this problem So, finally I used one final loop to determine which of the remaining couple numbers had a 2 digit prime factorization, since that is what we are interested in for this part of the problem. This final loop outputs 74, which has a prime factorization of 2x37 which can be found by running \texttt{factorize(74)}. Since 74's prime factorization contains only 2 numbers which are unique, we know that this is the correct replacement number.}
 % Write your answer and explanations here.
 
 \begin{knitrout}\scriptsize
@@ -156,19 +158,20 @@ to this \texttt{.Rnw} file.\\
 
 \hlcom{#####################Printing Answers##########################################}
 
-\hlkwd{print}\hldef{(}\hlkwd{paste}\hldef{(}\hlsng{"Incorrect Number  ="} \hldef{, Incorrect_Number))}
+\hldef{Incorrect_Number}
 \end{alltt}
 \begin{verbatim}
-## [1] "Incorrect Number  = 75"
+## [1] 75
 \end{verbatim}
 \begin{alltt}
-\hlkwd{print}\hldef{(}\hlkwd{paste}\hldef{(}\hlsng{"Replacement Number = "}\hldef{, Replacement_Number))}
+\hldef{Replacement_Number}
 \end{alltt}
 \begin{verbatim}
-## [1] "Replacement Number =  74"
+## [1] 74
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
+\nocite{gmp}
 
 \end{enumerate}
 
